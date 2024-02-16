@@ -4,6 +4,7 @@ class Song:
     genres = []
     artists = []
     genre_count = {}
+    artist_count = {}
 
     def __init__(self, name, artist, genre):
         self.add_song_to_count()
@@ -13,6 +14,7 @@ class Song:
         Song.add_to_genre(self)
         Song.add_to_artists(self)
         Song.add_to_genre_count(self)
+        Song.add_to_artist_count(self)
 
     @classmethod
     def add_song_to_count(cls, increment = 1):
@@ -31,22 +33,13 @@ class Song:
     @classmethod
     def add_to_genre_count(cls, self, increment = 1):
         if self.genre in cls.genre_count.keys():
-            breakpoint()
             cls.genre_count[self.genre] += 1
         else:
             cls.genre_count[self.genre] = 1
-
-
-
-            # if genres in cls.genre_count.keys():
-            #     cls.genre_count[genres] += 1
-            # else:
-            #     cls.genre_count[genres] = 1
-            
-                
-        # adds to genre_count where keys are names of each genre
-        # each key points to a value that is the number of songs assigned to that genre
         
     @classmethod
     def add_to_artist_count(cls, self):
-        pass
+        if self.artist in cls.artist_count.keys():
+            cls.artist_count[self.artist] += 1
+        else:
+            cls.artist_count[self.artist] = 1
