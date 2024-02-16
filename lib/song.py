@@ -14,37 +14,36 @@ class Song:
         Song.add_to_artists(self)
         Song.add_to_genre_count(self)
 
-
     @classmethod
     def add_song_to_count(cls, increment = 1):
         cls.count += increment
 
     @classmethod
     def add_to_genre(cls, self):
-        cls.genres.append(self.genre)
+        if self.genre not in cls.genres:
+            cls.genres.append(self.genre)
         
     @classmethod
     def add_to_artists(cls, self):
-        cls.artists.append(self.artist)
+        if self.artist not in cls.artists:
+            cls.artists.append(self.artist)
 
     @classmethod
     def add_to_genre_count(cls, self, increment = 1):
-        breakpoint()
-        g_count = 0
-        cls.genre_count = {
-                    self.genre : 1
-                } 
-        # g_count = 0
-        # for genres in cls.genres:
-        #     if genres == self.genre:
-        #         breakpoint()
-        #         cls.genre_count[value] = cls.genre_count[value] + increment
-        #     else:
-        #         genre_count = {
-        #             self.genre : sum(g_count + increment)
-                # } 
+        if self.genre in cls.genre_count.keys():
+            breakpoint()
+            cls.genre_count[self.genre] += 1
+        else:
+            cls.genre_count[self.genre] = 1
 
 
+
+            # if genres in cls.genre_count.keys():
+            #     cls.genre_count[genres] += 1
+            # else:
+            #     cls.genre_count[genres] = 1
+            
+                
         # adds to genre_count where keys are names of each genre
         # each key points to a value that is the number of songs assigned to that genre
         
